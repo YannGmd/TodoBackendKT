@@ -11,5 +11,5 @@ data class TodoEntity (
     var order       : Int,
 
     @Id @GeneratedValue(strategy = GenerationType.UUID)
-    var id          : UUID? = null
+    var id          : UUID? = null,
 )
