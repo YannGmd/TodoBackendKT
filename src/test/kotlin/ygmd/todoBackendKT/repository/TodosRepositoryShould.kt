@@ -48,6 +48,14 @@ open class TodosRepositoryShould @Autowired constructor(
     }
 
     @Test
+    fun returnTrueIfExistingByOrder(){
+        val toPersist = TodoEntity(title, completed, order)
+        todosRepository.save(toPersist)
+        assertThat(todosRepository.existsByOrder(order))
+            .isTrue
+    }
+
+    @Test
     @DisplayName("update todo if already existing")
     fun updateTodoIfAlreadyExisting() {
         val persistedFirst: TodoEntity = TodoEntity(title, completed, order)
