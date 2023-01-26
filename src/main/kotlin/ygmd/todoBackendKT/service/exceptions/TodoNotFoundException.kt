@@ -1,4 +1,4 @@
-package ygmd.todoBackendKT.service
+package ygmd.todoBackendKT.service.exceptions
 
 class TodoNotFoundException: Throwable() {
 }
