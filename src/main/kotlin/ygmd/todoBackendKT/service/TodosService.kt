@@ -10,14 +10,16 @@ interface TodosService {
     fun getTodos(): List<TodoModel>
 
     @Throws(TodoNotFoundException::class)
-    fun getTodo(id: UUID): TodoModel?
+    fun getTodo(id: UUID): TodoModel
 
-    fun createTodo(model: TodoModel)
+    fun createTodo(request: TodoModel): TodoModel
 
-    @Throws(TodoNotFoundException::class) fun deleteTodo(id: UUID)
+    @Throws(TodoNotFoundException::class)
+    fun deleteTodo(id: UUID)
 
+    fun deleteAll()
     fun deleteCompleted()
 
     @Throws(TodoNotFoundException::class, TodoNotUpdatableException::class)
-    fun updateTodo(request: TodoUpdateRequest)
+    fun updateTodo(request: TodoUpdate): TodoModel?
 }

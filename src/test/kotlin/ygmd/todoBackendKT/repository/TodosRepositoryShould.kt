@@ -48,11 +48,12 @@ open class TodosRepositoryShould @Autowired constructor(
     }
 
     @Test
-    fun returnTrueIfExistingByOrder(){
+    fun returnEntityAccordingToItsOrder(){
         val toPersist = TodoEntity(title, completed, order)
         todosRepository.save(toPersist)
-        assertThat(todosRepository.existsByOrder(order))
-            .isTrue
+        assertThat(todosRepository.findFirstByOrder(order))
+            .isNotNull
+            .isEqualTo(toPersist)
     }
 
     @Test

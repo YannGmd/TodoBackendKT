@@ -1,5 +1,6 @@
 package ygmd.todoBackendKT.repository
 
+import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Modifying
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.CrudRepository
@@ -8,8 +9,7 @@ import org.springframework.transaction.annotation.Transactional
 import java.util.*
 
 @Repository
-@Transactional(readOnly = true)
-interface TodosRepository: CrudRepository<TodoEntity, UUID> {
+interface TodosRepository: JpaRepository<TodoEntity, UUID> {
     @Transactional
     @Modifying
     @Query(value = "delete from TodoEntity t where t.completed=true")
@@ -17,5 +17,5 @@ interface TodosRepository: CrudRepository<TodoEntity, UUID> {
 
     fun findFirstByOrderByOrderDesc(): TodoEntity?
 
-    fun existsByOrder(order: Int): Boolean
+    fun findFirstByOrder(order: Int): TodoEntity?
 }

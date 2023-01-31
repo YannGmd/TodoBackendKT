@@ -1,6 +1,7 @@
 package ygmd.todoBackendKT.repository
 
 import jakarta.persistence.*
+import org.hibernate.annotations.GenericGenerator
 import java.util.*
 
 @Entity
