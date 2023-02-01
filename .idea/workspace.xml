@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a3e7bf42-2014-42cf-87e8-a2645b99fef1" name="Changes" comment="" />
+    <list default="true" id="a3e7bf42-2014-42cf-87e8-a2645b99fef1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TodoBackendKT.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TodoBackendKT.iml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -121,7 +125,28 @@
       <command value="mvn clean package" />
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.TodoBackendKtApplication">
+  <component name="RunManager" selected="Gradle.C:/Users/Guest1/Documents/Carbon/Code/Katas/TodoBackend/TodoBackendKT [build]">
+    <configuration name="C:/Users/Guest1/Documents/Carbon/Code/Katas/TodoBackend/TodoBackendKT [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="TodoBackendKT [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -170,14 +195,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in TodoBackendKT.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="TodoBackendKT.test" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="TodoBackendKT.test" />
       <method v="2">
@@ -207,11 +224,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.C:/Users/Guest1/Documents/Carbon/Code/Katas/TodoBackend/TodoBackendKT [build]" />
         <item itemvalue="JUnit.All in TodoBackendKT" />
         <item itemvalue="JUnit.All in TodoBackendKT.test (2)" />
         <item itemvalue="Gradle.TodoBackendKT [build]" />
         <item itemvalue="JUnit.All in TodoBackendKT.test (1)" />
-        <item itemvalue="JUnit.All in TodoBackendKT.test" />
       </list>
     </recent_temporary>
   </component>
@@ -234,7 +251,8 @@
       <workItem from="1675247998921" duration="400000" />
       <workItem from="1675248421939" duration="581000" />
       <workItem from="1675249020149" duration="40000" />
-      <workItem from="1675249075351" duration="2664000" />
+      <workItem from="1675249075351" duration="3758000" />
+      <workItem from="1675261041378" duration="128000" />
     </task>
     <servers />
   </component>
