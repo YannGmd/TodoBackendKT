@@ -46,10 +46,11 @@ class TodosBackendServiceShould {
 
         service.createTodo(withoutIdModelRef)
 
-        val verifier = inOrder(repository)
-        verifier.verify(repository).findFirstByOrderByOrderDesc()
-        verifier.verify(repository).save(TodoEntity(withoutIdModelRef.title, withoutIdModelRef.completed, withoutIdModelRef.order + 1))
-        verifier.verifyNoMoreInteractions()
+        inOrder(repository).also {
+            it.verify(repository).findFirstByOrderByOrderDesc()
+            it.verify(repository).save(TodoEntity(withoutIdModelRef.title, withoutIdModelRef.completed, withoutIdModelRef.order + 1))
+            it.verifyNoMoreInteractions()
+        }
     }
 
     @Test
@@ -59,10 +60,11 @@ class TodosBackendServiceShould {
 
         service.deleteTodo(withIdModelRef.id!!)
 
-        val verifier = inOrder(repository)
-        verifier.verify(repository).findById(withIdModelRef.id!!)
-        verifier.verify(repository).delete(withIdModelRef.asEntity())
-        verifyNoMoreInteractions(repository)
+        inOrder(repository).also {
+            it.verify(repository).findById(withIdModelRef.id!!)
+            it.verify(repository).delete(withIdModelRef.asEntity())
+            verifyNoMoreInteractions(repository)
+        }
     }
 
     @Test
@@ -120,7 +122,7 @@ class TodosBackendServiceShould {
 
         service.updateTodo(updateRequest)
 
-        inOrder(repository).let {
+        inOrder(repository).also {
             it.verify(repository).findById(updateRequest.id)
             it.verify(repository).findFirstByOrder(withIdModelRef.order)
             it.verify(repository).save(updateRequest.asEntity())
@@ -156,10 +158,11 @@ class TodosBackendServiceShould {
             .isNotNull
             .isEqualTo(returnedModel)
 
-        val verifier = inOrder(repository)
-        verifier.verify(repository).findById(partialUpdateRequest.id)
-        verifier.verify(repository).save(returnedModel.asEntity())
-        verifier.verifyNoMoreInteractions()
+        inOrder(repository).also {
+            it.verify(repository).findById(partialUpdateRequest.id)
+            it.verify(repository).save(returnedModel.asEntity())
+            it.verifyNoMoreInteractions()
+        }
     }
 
     @Test
@@ -174,6 +177,7 @@ class TodosBackendServiceShould {
 
         val id = UUID.randomUUID()
         assertThrows<TodoNotFoundException> { service.updateTodo(updateRequest.asTodoUpdate(id)) }
+
         verify(repository).findById(id)
         verifyNoMoreInteractions(repository)
     }

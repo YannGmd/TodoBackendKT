@@ -13,7 +13,6 @@ class TodosBackendService(private val todosRepository: TodosRepository) : TodosS
     override fun getTodos(): List<TodoModel> {
         return todosRepository.findAll()
             .map { it.asModel() }
-            .toList()
     }
 
     override fun getTodo(id: UUID): TodoModel {
@@ -24,9 +23,9 @@ class TodosBackendService(private val todosRepository: TodosRepository) : TodosS
     }
 
     override fun createTodo(request: TodoModel): TodoModel {
-        println("Creating: $request")
-        val toSave = TodoEntity(request.title, request.completed, maxOrder())
-        return todosRepository.save(toSave).asModel()
+        return todosRepository
+            .save(TodoEntity(request.title, request.completed, maxOrder()))
+            .asModel()
     }
 
     override fun deleteAll() {
@@ -39,7 +38,9 @@ class TodosBackendService(private val todosRepository: TodosRepository) : TodosS
 
     override fun deleteTodo(id: UUID) {
         todosRepository.delete(
-            todosRepository.findById(id).orElseThrow { TodoNotFoundException() }
+            todosRepository
+                .findById(id)
+                .orElseThrow { TodoNotFoundException() }
         )
     }
 
@@ -50,18 +51,25 @@ class TodosBackendService(private val todosRepository: TodosRepository) : TodosS
     override fun updateTodo(request: TodoUpdate): TodoModel {
         val existingTodo = getTodo(request.id)
         checkOrder(existingTodo)
-        val toSave = existingTodo.copy(
+
+        val toSaveEntity = existingTodo.copy(
             id = request.id,
             title = request.title ?: existingTodo.title,
             completed = request.completed ?: existingTodo.completed,
             order = request.order ?: existingTodo.order
         ).asEntity()
-        val savedModel = todosRepository.save(toSave)
-        return savedModel.asModel()
+
+        return todosRepository
+            .save(toSaveEntity)
+            .asModel()
     }
 
     private fun checkOrder(ref: TodoModel){
-        todosRepository.findFirstByOrder(ref.order)?.let { if (it.id != ref.id) throw TodoNotUpdatableException() }
+        todosRepository
+            .findFirstByOrder(ref.order)
+            ?.let {
+                if (it.id != ref.id) throw TodoNotUpdatableException()
+            }
     }
 
     private fun TodoModel.asEntity(): TodoEntity {

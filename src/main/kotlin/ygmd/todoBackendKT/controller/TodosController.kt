@@ -25,7 +25,7 @@ import java.util.*
 
 @RestController
 @RequestMapping("/todos")
-class TodosController @Autowired constructor(@Qualifier("todosBackendService") val service: TodosService) {
+class TodosController @Autowired constructor(@Qualifier("todosBackendService") private val service: TodosService) {
 
     @GetMapping(produces = ["application/json"])
     fun getTodos(builder: UriComponentsBuilder): ResponseEntity<List<TodoResponse>> {

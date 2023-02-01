@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional
 import java.util.*
 
 @Repository
+@Transactional(readOnly = true)
 interface TodosRepository: JpaRepository<TodoEntity, UUID> {
     @Transactional
     @Modifying
